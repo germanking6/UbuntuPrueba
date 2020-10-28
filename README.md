@@ -1,2 +1,2 @@
-# TC1001_10
-For group 10 of Ken's TC1001 class, October 2020
+Credit where credit is due.
+- Shout out to icons8.com where all the icones (1 - 15) were taken from.
