@@ -25,7 +25,7 @@ class Juego(pg.sprite.Sprite):
         while not end:
             for event in pg.event.get():
                 if event.type == pg.QUIT:
-                    done = True
+                    end = True
 
             mousePos=pg.mouse.get_pos()
             self.Student.rect.x=mousePos[0]
