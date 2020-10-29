@@ -22,21 +22,28 @@ class Juego(pg.sprite.Sprite):
         self.sprytes.add(self.Student)
         self.sprytes.add(self.Ken)
 
+        # Main loop
         while not end:
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     done = True
 
+            # Updates students position.
             mousePos=pg.mouse.get_pos()
             self.Student.rect.x=mousePos[0]
             self.Student.rect.y=mousePos[1]
             
+            # Creates HW when there is non on map.
             if not tareas:
                 homework=HomeWork()
                 homeworks.add(homework)
                 self.sprytes.add(homework)
                 tareas=True
+
+            # Updates Professor position to follow student.
             
+            
+            # Student gets HW.
             hit=pg.sprite.spritecollide(self.Student,homeworks,True)
             for homework in hit:
                 score += 5
@@ -44,6 +51,7 @@ class Juego(pg.sprite.Sprite):
                 tareas=False
             screen.fill(WHITE)
 
+            # DIsplay sprites.
             self.sprytes.draw(screen)
             pg.display.flip()
             clock.tick(60)
