@@ -28,7 +28,13 @@ class Juego(pg.sprite.Sprite):
                 if event.type == pg.QUIT:
                     done = True
 
-            # Updates students position.
+        # Updates students position.
+        while not end:
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    end = True
+
+            # Update student's position.
             mousePos=pg.mouse.get_pos()
             self.Student.rect.x=mousePos[0]
             self.Student.rect.y=mousePos[1]

@@ -20,6 +20,7 @@ class ken(pg.sprite.Sprite):
         # Move along vector towards the player at current speed.
         dirvect.scale_to_length(self.speed)
         self.rect.move_ip(dirvect)
+        self.pos.y=random.randrange(600)     
 
 class student(pg.sprite.Sprite):
     def __init__(self):
