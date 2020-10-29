@@ -4,12 +4,12 @@ import random
 class ken(pg.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image=pg.image.load("ken.png")
-        self.pos=self.image.rect.get_rect()
-        self.pos.x=random.randrange(900)
-        self.pos.y=random.randrange(600)
+        self.image=pg.image.load("rsz_ken.png")
+        self.rect=self.image.get_rect()
+        self.rect.x=random.randrange(900)
+        self.rect.y=random.randrange(600)
 
-    def attack(self, player_pos_x, player_pos_y):
+    def attack(self, player_pos_x, player_pos_y,speed):
         # Find direction vector (dx, dy) between enemy and player.
         dirvect = pg.math.Vector2(
             player_pos_x - self.rect.x,
@@ -18,12 +18,11 @@ class ken(pg.sprite.Sprite):
         dirvect.normalize()
 
         # Move along vector towards the player at current speed.
-        dirvect.scale_to_length(self.speed)
-        self.rect.move_ip(dirvect)
-        self.pos.y=random.randrange(600)     
+        dirvect.scale_to_length(speed)
+        self.rect.move_ip(dirvect)     
 
 class student(pg.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image=pg.image.load("")
-        self.pos=self.image.rect.get_rect()
+        self.image=pg.image.load("teemo.png")
+        self.rect=self.image.get_rect()

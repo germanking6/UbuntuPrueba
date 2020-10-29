@@ -10,7 +10,6 @@ class Juego(pg.sprite.Sprite):
 
     def initiate(self):
         WHITE = (255, 255, 255)
-        BLACK = (0, 0, 0)
         tareas = False
         score = 0
         pg.init()
@@ -21,13 +20,9 @@ class Juego(pg.sprite.Sprite):
         homeworks=pg.sprite.Group()
         self.sprytes.add(self.Student)
         self.sprytes.add(self.Ken)
-
-        # Main loop
-        while not end:
-            for event in pg.event.get():
-                if event.type == pg.QUIT:
-                    done = True
-
+        speed=4
+        boss=pg.sprite.Group()
+        boss.add(self.Ken)
         # Updates students position.
         while not end:
             for event in pg.event.get():
@@ -47,20 +42,25 @@ class Juego(pg.sprite.Sprite):
                 tareas=True
 
             # Updates Professor position to follow student.
-            ken.attack(student.rect.x, student.rect.y)
+            self.Ken.attack(self.Student.rect.x, self.Student.rect.y,speed)
             
             # Student gets HW.
             hit=pg.sprite.spritecollide(self.Student,homeworks,True)
             for homework in hit:
                 score += 5
+                speed=1.1*speed
                 print(score)
                 tareas=False
             screen.fill(WHITE)
-
+            hitEnd=pg.sprite.spritecollide(self.Student,boss,True)
+            for ken in hitEnd:
+                print("se acabo")
+                end=True
             # DIsplay sprites.
             self.sprytes.draw(screen)
             pg.display.flip()
             clock.tick(60)
+        print("puntaje final: ", score)
     
     def play(self):
         self.initiate()
