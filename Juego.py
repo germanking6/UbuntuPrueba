@@ -41,7 +41,7 @@ class Juego(pg.sprite.Sprite):
                 tareas=True
 
             # Updates Professor position to follow student.
-            
+            ken.attack(student.rect.x, student.rect.y)
             
             # Student gets HW.
             hit=pg.sprite.spritecollide(self.Student,homeworks,True)
