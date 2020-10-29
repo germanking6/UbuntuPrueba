@@ -44,7 +44,7 @@ class Game(object):
         
     def create_tiles(self):
         for i in range(15):
-            self.tile_list.add(Tile(i + 1))
+            self.tile_list.add(Tile(str(i + 1)))
 
         self.tile_list.add(Tile("null"))
 

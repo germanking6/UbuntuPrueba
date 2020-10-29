@@ -1,5 +1,5 @@
 import pygame as pg
-import constant as const
+import constants as const
 
 class Tile(pg.sprite.Sprite):
     def __init__(self, index):
@@ -7,7 +7,7 @@ class Tile(pg.sprite.Sprite):
         self.value = index
         self.image = pg.image.load(
             const.IMG_ADDRESS +
-            str(index) +
+            index +
             ".png"
         )
         self.rect = self.image.get_rect()
